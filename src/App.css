@@ -70,9 +70,42 @@ input{
   outline: 0;
   display: block;
 }
+
+/* LOGIN COMPONENT */
+.modal-backdrop{
+  background-color: #000000ae !important;
+}
+.sign-in-form{
+   position:absolute; 
+   top:50%; 
+   left:50%; 
+   transform: translate(-50%, -50%); 
+   width:30%; 
+   height:40%; 
+   background-color: #eee;
+   border-radius: 20px;
+ }
+ .login-sec{
+  height:40%;
+ }
+ .sign-in-form-2{
+  width:60%;
+  height:60%;
+ }
+@media(max-width:967px){
+  .sign-in-form{
+    width:90%;
+  }
+}
+@media(max-width:567px){
+  .sign-in-form{
+    width:80%;
+    height:50%;
+  }
+}
 .rest-container{
   right:0px;
-  top:93%;
+  top:95%;
   width:500px;
   border-radius:4px;
   background-color:#fff;
@@ -545,7 +578,7 @@ padding:2px;
 .menu-template-section{
   overflow-y:scroll;
   width:600px;
-  height:450px;
+  height:400px;
 }
 .menu-template-section::-webkit-scrollbar{
   width:2px;
@@ -622,6 +655,7 @@ padding:2px;
 }
 .payment-template-sec{
   width:600px;
+  height:400px;
 }
 
 .cartitem-msg{

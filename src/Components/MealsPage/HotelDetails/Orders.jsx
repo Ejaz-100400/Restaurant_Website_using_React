@@ -17,20 +17,19 @@ export default function Orders({detail}){
               marginRight: '-50%',
               transform: 'translate(-50%, -50%)',
               padding:'10px',
-              height:'80%',
-              zIndex:5
+              zIndex:5,
+              height: '80%',
             },
         };
     const customStyles2 = {
         content: {
-          top: '55%',
+          top: '50%',
           left: '50%',
           right: 'auto',
           bottom: 'auto',
           marginRight: '-50%',
           transform: 'translate(-50%, -50%)',
           padding:'10px',
-          height:'80%',
           zIndex:5
         },
       };
@@ -115,7 +114,7 @@ export default function Orders({detail}){
                     <div className='d-flex justify-content-between align-items-center mt-4 total-sec'>
                     <div className='d-flex justify-content-between w-25 align-items-center'>
                         <h5 className='fw-bold'>Subtotal</h5>
-                        <span className='total-cost fw-bold' style={{fontSize:'22px'}}>89</span>
+                        <span className='total-cost fw-bold' style={{fontSize:'22px'}}>{totalCost}</span>
                     </div>
                     <button className="place-order-btn w-25" onClick={open2Modal}>Pay Now</button>
                     </div>
@@ -158,14 +157,14 @@ export default function Orders({detail}){
              isOpen={modalIsOpen3}
              onAfterOpen={afterOpenModal}
              onRequestClose={close3Modal}
-             style={customStyles2}
+             style={customStyles}
             >
-               <div className="position-relative container payment-template">
+               <div className="position-relative container order-template">
                     <div className='position-sticky-top w-100 px-2'>
                     <i className='fa-solid fa-xmark position-absolute fa-1x' onClick={close3Modal} style={{right:'5px',top:"10px"}}></i>
                     <h4>Orders from {detail.name}</h4>
                     </div>
-                    <div className='position-relative payment-template-sec mt-5'>
+                    <div className='position-relative mt-5 menu-template-section'>
                       {additem.map(item=>{
                         return(
                           <>
@@ -183,13 +182,13 @@ export default function Orders({detail}){
                           </>
                         )
                       })}
-                       <div className='total d-flex justify-content-between'>
+                    </div>
+                    <div className='total d-flex justify-content-between'>
                           <span>Total Cost:</span>
                           <h4>₹{totalCost.toFixed(2)}</h4>
-                        </div>
-                        <div className='position-relative'>
-                        <button className='place-order-btn w-25 position-absolute' style={{right:'0px'}} >ORDER NOW</button>
-                        </div>
+                    </div>
+                    <div className='position-relative'>
+                      <button className='place-order-btn w-25 position-absolute' style={{right:'0px',top:'10px'}} >ORDER NOW</button>
                     </div>
                 </div>
             </Modal>

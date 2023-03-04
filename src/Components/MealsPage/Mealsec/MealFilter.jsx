@@ -23,7 +23,6 @@ export default function MealFilter(){
         } else if (value === "hightolow") {
             restaurants.sort((a, b) => b.cost - a.cost);
         }
-       
       }
 
 
@@ -44,9 +43,9 @@ export default function MealFilter(){
                 <label for ='filter-loc' name="location" className="pt-2">Select Location</label>
                 <select name="location"id="filter-location"className="p-2 w-100" value={filter.city_name}
                 onChange={(e) =>setFilter({ ...filter, city_name: e.target.value })}>
-                    <option>Select Location</option>
+                    {/* <option  onChange={()=>setFilter({...filter,city_name:e.target.value})}>Select Location</option> */}
                     {uniqueCities.map((city) => (
-                    <option key={city} name={city}>
+                    <option key={city} name={city} value={city}>
                         {city}
                     </option>
                     ))}
@@ -103,7 +102,7 @@ export default function MealFilter(){
                 <div className="sort">
                     <label for="food-type-cuisine" name="sort">Sort</label>
                     <div className="d-flex gap-2 pt-1">
-                        <input type="radio"  name="" value="lowtohigh" onChange={()=>setFilter({...filter,sort:filter.sort=1})} />
+                        <input type="radio"  name="" value="lowtohigh" onChange={()=>setFilter({...filter,sort:filter.sort=1,page:filter.page=1})} />
                     <label for="cost-option">Prices Low to High</label>
                     </div>
                     <div className="d-flex gap-2 pt-1">
@@ -129,6 +128,11 @@ export default function MealFilter(){
               <li className={`page-item p-2 ${filter.page<=1?'disabled':''}`} onClick={() => setFilter({ ...filter, page: filter.page - 1 })}>
                 <a className="page-link nav page-nav"><i class="fa-solid fa-chevron-left"></i></a>
               </li>
+              {/* {filter.map(filter,index=>{
+                return(
+                    <li className="page-item p-2" onClick={()=>setFilter({...filter,page:index})}><a className="page-link nav page-nav" href="#">{index}</a></li>
+                )
+              })} */}
               <li className="page-item p-2" onClick={()=>setFilter({...filter,page:1})}><a className="page-link nav page-nav" href="#">1</a></li>
               <li className="page-item p-2" onClick={()=>setFilter({...filter,page:2})}><a className="page-link nav page-nav" href="#">2</a></li>
               <li className="page-item p-2" onClick={()=>setFilter({...filter,page:3})}><a className="page-link nav page-nav" href="#">3</a></li>
