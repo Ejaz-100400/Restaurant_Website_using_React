@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { Context } from '../../../Context';
+import GooglePayButton from '@google-pay/button-react'
 export default function Orders({detail}){
     const{hoteldetail,menu,addtoItem,removeItem,additem,user,handleUser}=React.useContext(Context)
     const [localobject,setlocalobject]=React.useState('')
@@ -8,6 +9,8 @@ export default function Orders({detail}){
     const totalCost = additem.reduce((acc, item) => {
       return acc + item.cost * item.quantity;
     }, 0);
+   
+
     function handleaddress(){
       setaddress(e.target.value);
     }
@@ -18,7 +21,6 @@ export default function Orders({detail}){
         setlocalobject(JSON.parse(value))
       }
     },[])
-    console.log(user.address)
     const customStyles = {
             content: {
               top: '55%',
@@ -76,7 +78,7 @@ export default function Orders({detail}){
       }
     return(
         <div>
-            <button className="place-order-btn position-absolute" onClick={openModal}>Place Online Order</button>
+            <button className="place-order-btn position-absolute" onClick={openModal}>View Menu</button>
             {/* modal for menu items */}
             
             <div>
@@ -210,6 +212,43 @@ export default function Orders({detail}){
                     </div>
                     <div className='position-relative'>
                       <button className='place-order-btn w-25 position-absolute' style={{right:'0px',top:'10px'}} >ORDER NOW</button>
+                      {/* <GooglePayButton
+  environment="TEST"
+  paymentRequest={{
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    allowedPaymentMethods: [
+      {
+        type: 'CARD',
+        parameters: {
+          allowedAuthMethods: ['PAN_ONLY'],
+          allowedCardNetworks: ['MASTERCARD', 'VISA',]
+        },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            gateway: 'example',
+            gatewayMerchantId: 'exampleGatewayMerchantId',
+          },
+        },
+      },
+    ],
+    merchantInfo: {
+      merchantId: '12345678901234567890',
+      merchantName: 'Demo Merchant',
+    },
+    transactionInfo: {
+      totalPriceStatus: 'FINAL',
+      totalPriceLabel: 'Total  Price',
+      totalPrice: `${totalCost}`,
+      currencyCode: 'INR',
+      countryCode: 'US',
+    },
+  }}
+  onLoadPaymentData={paymentRequest => {
+    console.log('load payment data', paymentRequest);
+  }}
+/> */}
                     </div>
                 </div>
             </Modal>

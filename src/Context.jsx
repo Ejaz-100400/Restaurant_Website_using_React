@@ -92,6 +92,8 @@ React.useEffect(() => {
             sethoteldetail(()=>[])
         }
     },[location.pathname])
+     
+
 
     function addtoItem(item) { 
       setadditem(prevItems => {

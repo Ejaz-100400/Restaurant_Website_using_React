@@ -45,7 +45,7 @@ export default function Gallery({detail}){
             >
                 <div className="position-relative  container">
                     <div className='position-sticky-top w-100 px-2'>
-                    <i className='fa-solid fa-xmark position-absolute fa-2x close-img-glry' onClick={closeModal} style={{right:'5px',top:"10px"}}></i>
+                    <i className='fa-solid fa-xmark position-absolute fa-1x close-img-glry' onClick={closeModal} style={{right:'5px',top:"10px"}}></i>
                     </div>
                     <div className='d-flex justtify-content-center align-items-center position-absolute overflow-hidden w-100 img-glry-section' style={{top:'50%'}}>
                     <Swiper
@@ -55,7 +55,7 @@ export default function Gallery({detail}){
                          {detail.foodlist.map((item)=>{
                             return(
                                 <SwiperSlide className='d-flex justify-content-center align-items-center'>
-                                    <img src={item.img} alt=""  width='540' className='glry-img'/>
+                                    <img src={item.img} alt=""  width='440' className='glry-img'/>
                                 </SwiperSlide>
                             )
                          })}

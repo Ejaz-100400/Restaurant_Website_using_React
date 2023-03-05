@@ -50,6 +50,7 @@ border:1px solid #fff;
   font-size: 30px;
   color:#ffffff;
   font-weight:bolder;
+  font-family:'Tilt Prism';
   text-shadow: 2px 2px #060505;
 }
 .main--logoname{
@@ -640,9 +641,6 @@ padding:2px;
 /* GALLERY COMPONENT */
 
 .close-img-glry{
-  border-radius: 50%;
-  padding:8px 17px;
-  background-color:#707070;
   color:white;
 }
 .glry-img{
@@ -652,7 +650,6 @@ padding:2px;
   margin-top:100px;
 }
 .close-img-glry:hover{
-  border:1px solid white;
 }
 
 .proceed-sec{
