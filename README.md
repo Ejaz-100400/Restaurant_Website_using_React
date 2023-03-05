@@ -1,32 +1,34 @@
 # Restaurant_Website_using_React
 
-
-
-Sure! Here's the same text in README.md format suitable for GitHub:
-
-Restaurant Website using React
+<br>
 This is a web application for a restaurant built using React, MongoDB, Bootstrap, Node.js, and Express. The website allows users to create an account, filter restaurants, view hotel details, add and remove items from their cart, order items online, and make online payments.
 
-Languages Used
-React
-MongoDB
-Bootstrap
-Node.js
-Express
-Features
-Create account: Users can create an account with their name, email, and password to save their preferences and order history.
-Restaurant filter: Users can filter restaurants by location, cuisine, and price range to find the perfect dining option.
-Hotel details: Users can view detailed information about each restaurant, including its name, address, contact information, menu items, and photos.
-Adding/removing cart: Users can add and remove items from their cart and view a summary of their order before checkout.
-Online ordering: Users can place orders online and choose a pickup or delivery option.
-Payment: Users can make online payments using a secure payment gateway.
-Getting Started
-Prerequisites
-To run this project, you'll need to have the following software installed on your computer:
+## Languages Used
+-React
+-MongoDB
+-Bootstrap
+-Node.js
+-Express
 
-Node.js
-MongoDB
-Installing
+
+## Features
+-Create account: Users can create an account with their name, email, and password to save their preferences and order history.
+Restaurant filter: Users can filter restaurants by location, cuisine, and price range to find the perfect dining option.
+
+-Hotel details: Users can view detailed information about each restaurant, including its name, address, contact information, menu items, and photos.
+Adding/removing cart: Users can add and remove items from their cart and view a summary of their order before checkout.
+
+-Online ordering: Users can place orders online and choose a pickup or delivery option.
+
+-Payment: Users can make online payments using a secure payment gateway.
+
+## Getting Started
+
+-Prerequisites
+To run this project, you'll need to have the following software installed on your computer:
+Node.js,MongoDB
+
+-Installing
 Clone this repository to your local machine.
 Open a terminal window and navigate to the project directory.
 Run npm install to install the project dependencies.
