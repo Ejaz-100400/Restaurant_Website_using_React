@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cedarville+Cursive&family=Inter:wght@300&family=Lato:wght@300&family=Poppins:wght@200&family=Press+Start+2P&family=Roboto+Slab:wght@200;300&family=Roboto:wght@100&family=Tilt+Prism&display=swap');
+
 *{
   margin:0px;
   padding:0px;
@@ -7,11 +9,11 @@ Header{
   top:10px;
   right:100px;
 }
-@media(max-width:967px){
+/* @media(max-width:967px){
   Header{
       display: none;
   }
-}
+} */
 .log{
   gap:25px;
 }
@@ -29,7 +31,7 @@ border:1px solid #fff;
   place-items:center;
 }
 .main{
-  background:linear-gradient(to top,rgba(0, 0, 0, 0.829),#9d0e0e67,#0705050c),url('/assets/shutterstock_348320018.png');
+  background:linear-gradient(to top,rgba(0, 0, 0, 0.829),#421d1d67,#00000097),url('/assets/shutterstock_348320018.png');
   min-height: 70vh;
   background-size: cover;
   background-repeat: no-repeat;
@@ -38,23 +40,27 @@ border:1px solid #fff;
 }
 .elogo{
   font-size: 70px;
-  border-radius: 50%;
-  padding:23px 38px;
   text-align: center;
-  color:#EB2929;
+  color:#ffffff;
   font-weight:bolder;
+  font-family:'Tilt Prism';
+  text-shadow: 2px 2px #ff0000;
+}
+.elogo-mealhead{
+  font-size: 30px;
+  color:#ffffff;
+  font-weight:bolder;
+  text-shadow: 2px 2px #060505;
 }
 .main--logoname{
-  font-size: 36px;
+  font-size: 18px;
   font-weight: 500;
-  top:40px;
 }
 .form-outer{
   display: flex;
   align-items: center;
   justify-content: center;
   position:relative;
-  top:50px;
 }
 .form-input {
   margin: 10px auto;
@@ -77,7 +83,7 @@ input{
 }
 .sign-in-form{
    position:absolute; 
-   top:50%; 
+   top:55%; 
    left:50%; 
    transform: translate(-50%, -50%); 
    width:30%; 
@@ -90,7 +96,7 @@ input{
  }
  .sign-in-form-2{
   width:60%;
-  height:60%;
+  height:80%;
  }
 @media(max-width:967px){
   .sign-in-form{
@@ -185,9 +191,9 @@ flex-wrap: wrap;
   .main{
     min-height: 84vh;
   }
-  .log{
+  /* .log{
     display: none;
-  }
+  } */
   input[name='restaurant']{
     width:100%;
   }
@@ -280,7 +286,6 @@ flex-wrap: wrap;
   border:1px solid white;
   border-radius:3px;
   background-color:transparent;
-  padding:10px 26px;
 }
 .menu-details{
   height:100%;

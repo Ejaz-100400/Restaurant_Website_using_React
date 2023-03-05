@@ -2,12 +2,23 @@ import React from 'react';
 import Modal from 'react-modal';
 import { Context } from '../../../Context';
 export default function Orders({detail}){
-    const{hoteldetail,menu,addtoItem,removeItem,counter,additem,itemmsg}=React.useContext(Context)
+    const{hoteldetail,menu,addtoItem,removeItem,additem,user,handleUser}=React.useContext(Context)
+    const [localobject,setlocalobject]=React.useState('')
+    const[address,setaddress]=React.useState('')
     const totalCost = additem.reduce((acc, item) => {
       return acc + item.cost * item.quantity;
     }, 0);
-    
-    console.log(additem)
+    function handleaddress(){
+      setaddress(e.target.value);
+    }
+    React.useEffect(()=>{
+      const key = 'user';
+      const value = localStorage.getItem(key)
+      if(value){
+        setlocalobject(JSON.parse(value))
+      }
+    },[])
+    console.log(user.address)
     const customStyles = {
             content: {
               top: '55%',
@@ -136,15 +147,21 @@ export default function Orders({detail}){
                     <div className='position-relative proceed-sec mt-5'>
                         <form action="">
                         <div class="form-floating mb-3">
-                          <input type="text" class="form-control" id="floatingInput" placeholder="Enter your name"/>
-                            <label for="floatingInput">Email address</label>
+                          <input type="text" class="form-control" id="floatingInput" placeholder="Enter your name" name='name'
+                           value={localobject.name===''||localobject.name===undefined?'':localobject.name}
+                           />
+                            <label for="floatingInput">Name</label>
                           </div>
                           <div class="form-floating">
-                            <input type="number" class="form-control" id="floatingPassword" placeholder="Enter your number"/>
-                            <label for="floatingPassword">Password</label>
+                            <input type="number" class="form-control" id="floatingPassword" placeholder="Enter your number" name='phonenumber'
+                            value={localobject.phonenumber===''||localobject.phonenumber===undefined?'':localobject.phonenumber}
+                            />
+                            <label for="floatingPassword">Phone Number</label>
                           </div>
                           <div class="form-floating mt-4">
-                            <textarea type="textarea" class="form-control" id="floatingPassword" placeholder="Address" style={{height:'200px'}}/>
+                            <textarea type="textarea" class="form-control" id="floatingPassword" placeholder="Address" style={{height:'200px'}} name='address'
+                             value={localobject.address===''||localobject.address===undefined?'':localobject.address}
+                             />
                             <label for="floatingPassword">Address</label>
                           </div>
                           <input type="submit" className='place-order-btn mt-4' value='Proceed' onClick={open3Modal}/>
@@ -152,6 +169,10 @@ export default function Orders({detail}){
                     </div>
                   </div>
             </Modal>
+
+
+
+
             {/* modal for final payment check */}
             <Modal
              isOpen={modalIsOpen3}

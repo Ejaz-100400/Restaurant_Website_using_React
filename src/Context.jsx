@@ -25,6 +25,20 @@ function ContextProvider({children}){
       page: 1,
       sort:1,
     });
+    // form data
+    const[user,setuser]=React.useState({
+      name:'',
+      email:'',
+      password:'',
+      phonenumber:'',
+      address:''
+    })
+    //handle usedata
+    const handleUser = (event) => {
+      const updatedUser = { ...user, [event.target.name]: event.target.value };
+      setuser(updatedUser);
+    };
+
 
     // fetching meal type data
     React.useEffect(()=>{
@@ -59,16 +73,17 @@ React.useEffect(() => {
         .then(data=>setmenu(data.res))
     },[])
     // display menumeals on Filter section
-    // function displayMenuMeals(mealname){
-    //     const restaurants = menu.filter(restaurant=>{
-    //         return restaurant.type.some(type=>type.name === mealname);
-    //     })
-    //     setdisplaymeal(restaurants)
-    // }
+    function displayMenuMeals(mealname){
+        const restaurants = menu.filter(restaurant=>{
+            return restaurant.type.some(type=>type.name === mealname);
+        })
+        setdisplaymeal(restaurants)
+    }
 
     // display details of the restaurant
     function displayHotelDetails(hoteldetail){
         sethoteldetail(prevmenu=>[...prevmenu,hoteldetail]);
+        localStorage.setItem('hoteldetail',JSON.stringify(hoteldetail));
     }
 
     // clearing the deatils of the restaurant in Hoteldetail component
@@ -126,6 +141,9 @@ React.useEffect(() => {
 
     return(
         <Context.Provider value={{
+          user,
+          setuser,
+          handleUser,
           hoteldetail,
           menu,
           fetchRestaurants,

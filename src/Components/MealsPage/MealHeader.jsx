@@ -5,7 +5,7 @@ export default function MealHeader(){
         <div className="position-fixed meal-head w-100" id='header-mealspage'>
             <header className="meal-header d-flex justify-content-between p-3">
                 <Link className="text-decoration-none" to='/'>
-                <span className="logo-e bg-white">e!</span>
+                <span className="elogo-mealhead">FLAVOURSOME!</span>
                 </Link>
                 <Login/>
             </header>

@@ -19,7 +19,7 @@ export default function HotelMenu(props){
                     <div className="food-desc d-flex-column">
                         <div className="desc-1 d-flex gap-5 p-1">
                             <span className="food-desc-1">Cusines:</span> 
-                            <span  className="food-desc-2 mx-4">Bakery</span>
+                            <span  className="food-desc-2 mx-4">{props.Cuisine[0].cuisinename}, {props.Cuisine[1].cuisinename}</span>
                         </div>
                         <div className="desc-2 d-flex  gap-5 p-1">
                             <span className="food-desc-1">Cost for Two:</span>

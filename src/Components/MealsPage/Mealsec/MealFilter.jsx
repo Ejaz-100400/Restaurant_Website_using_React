@@ -32,7 +32,7 @@ export default function MealFilter(){
         <div>
             <div className="mealspage--section">
         <main className="filter-section">
-            <h1 className="pt-5 px-4">Breakfast places in Chennai</h1>
+            <h1 className="pt-5 px-4">{} places in {filter.city_name}</h1>
         <div className="d-flex  gap-4 pt-3 mb-5">
             <section className="Breakfast--places--filter  p-4"> 
             <h4 className="fw-semi-bold">Filters</h4>

@@ -1,14 +1,12 @@
 import React from "react";
 import Modal from 'react-modal';
 import Mailimg from './.././.././.././public/assets/mail.png'
+import { Context } from "../../Context";
 export default function Login(){ 
-  const[user,setuser]=React.useState({
-    name:'',
-    email:'',
-    password:'',
-    phonenumber:'',
-    address:''
-  })
+  const{user,setuser}=React.useContext(Context);
+  const [alert,setalert] = React.useState(false)
+
+
     const customStyles = {
         content: {
           top: '50%',
@@ -28,8 +26,39 @@ export default function Login(){
   const handleUser = (event) => {
     const updatedUser = { ...user, [event.target.name]: event.target.value };
     setuser(updatedUser);
-    localStorage.setItem("user", JSON.stringify(updatedUser));   
   };
+
+  // validation for user who is creating account 
+  function handleCreateUser(e){
+    const phoneNumberRegex = /^[\d\s-]+$/;
+    e.preventDefault();
+    if(user.email==='' ||(!/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(user.email))&&(!user.name)&&(user.phonenumber===''||(phoneNumberRegex.test(user.phonenumber)))&&(user.password.length<12)&&(!user.address.length<10)){
+      setalert(true)
+    }
+    else{
+      setalert(false)
+      const updatedUser = { ...user, [e.target.name]: e.target.value };
+      setuser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      set2IsOpen(false);   
+    }
+  }
+
+   // validation for user who is logging in 
+   function handleLoginuser(e){
+    e.preventDefault();
+    const loc=localStorage.getItem('user')
+    const usercre = JSON.parse(loc)
+     if(usercre.email!= user.email && usercre.password!= user.password){
+      setalert(true)
+     }
+     else{
+      setalert(false)
+     }
+     if(!user.email&&!user.password){
+      setalert(true)
+     }
+  }
   console.log(user)
 
 
@@ -58,12 +87,11 @@ export default function Login(){
   function closelogModal() {
     setmodelsOpen(false);
   }
+
+
     return(
-        <div>
-        <div className="d-flex align-items-center gap-4">
-        <span className="login-span text-light" onClick={openModal}>Login</span>
-        <button className="login-btn btn p-3 w-100 text-light" onClick={open2Modal}>Create account</button>
-        </div>
+        <div>   
+        <button className="login-btn bg-light btn  px-2 py-2 w-100 text-dark" onClick={open2Modal}>Create account</button>
         {/* Login */}
 
         
@@ -92,7 +120,7 @@ export default function Login(){
 
 
         {/* Log In*/}
-        <Modal
+        {/* <Modal
           className='modal-backdrop position-relative'
           isOpen={modallogOpen}
           onAfterOpen={afterOpenModal}
@@ -102,23 +130,26 @@ export default function Login(){
         >
         <div className="">
             <div className="position-absolute sign-in-form   login-sec p-3 mt-5">
+              <span className="text-warning text-center" style={{display:alert?'block':'none'}}>Kindly create an account</span>
               <form className="p-3 d-flex flex-column gap-3 justify-content-center">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control w-100" id="floatingInput" placeholder="name@example.com"/>
+                  <input type="email" class="form-control w-100" id="floatingInput" placeholder="name@example.com" 
+                  name='email' value={user.email} onChange={handleUser}/>
                   <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating">
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password"/>
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                  name="password" value={user.password} onChange={handleUser} />
                   <label for="floatingPassword">Password</label>
                 </div>
                 <div className="d-flex  gap-3 justify-content-center">
-                <button className="place-order-btn mt-3" >Submit</button>
+                <button className="place-order-btn mt-3" onClick={handleLoginuser}>Submit</button>
                 <button type="submit" className="place-order-btn mt-3 p-2" onClick={closelogModal} >Close</button>
                 </div>
               </form>
             </div>
         </div>
-        </Modal>
+        </Modal> */}
 
 
 
@@ -134,6 +165,7 @@ export default function Login(){
         >
         <div className="">
             <div className="position-absolute sign-in-form sign-in-form-2 p-3">
+              <span className="text-warning" style={{display:alert?'block':'none'}}>Please check all the fields</span>
               <form className="p-3 d-flex flex-column gap-3 justify-content-center">
                 <div class="form-floating mb-3">
                   <input type="test" class="form-control w-100" id="floatingInput" placeholder="name@example.com"
@@ -147,7 +179,7 @@ export default function Login(){
                   <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating">
-                  <input type="phonenumber" class="form-control" id="floatingNumber" placeholder="Password"
+                  <input type="number" class="form-control" id="floatingNumber" placeholder="Password"
                   name='phonenumber'
                    value={user.phonemnumber} onChange={handleUser}/>
                   <label for="floatingNumber">Phone Number</label>
@@ -158,8 +190,14 @@ export default function Login(){
                    value={user.password} onChange={handleUser}/>
                   <label for="floatingPassword">Password</label>
                 </div>
+                <div class="form-floating mt-4">
+                  <textarea type="textarea" class="form-control" id="floatingPassword" placeholder="Address" style={{height:'100px'}} name='address'
+                  value={user.address} onChange={handleUser}
+                />
+                  <label for="floatingPassword">Address</label>
+                </div>
                 <div className="d-flex  gap-3 justify-content-center">
-                <button className="place-order-btn mt-3" >Submit</button>
+                <button className="place-order-btn mt-3" onClick={handleCreateUser}>Submit</button>
                 <button type="submit" className="place-order-btn mt-3 p-2" onClick={close2Modal} >
                 Close
                 </button>

@@ -46,8 +46,8 @@ export default function Home(){
     {/* MAIN PAGE COMPONENT */}
     <main className="main d-grid">
         <div className='position-relative main--content text-center'>
-            <span className="elogo text-center bg-light">e!</span><br></br>
-            <span className="text-light main--logoname position-relative">Find the best restaurants, cafés, and bars</span>
+            <h1 className="elogo">FLAVOURSOME!</h1>
+            <span className="text-light main--logoname position-relative">Discover your new favorite dish.</span>
             <div className="form-outer d-flex">
                   <form className="form d-flex justify-content-center align-items-center">
                     {/* location field */}
@@ -74,7 +74,7 @@ export default function Home(){
                   </form>
               </div>
               
-               <div className="rest-container mt-5 position-absolute" style={{display:reslist?'block':'none'}}>
+               <div className="rest-container position-absolute" style={{display:reslist?'block':'none'}}>
                  <div>
                  {!searchdata.length?<p>Filter city and then check here</p>:searchitems}
                  </div>  

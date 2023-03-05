@@ -21,7 +21,8 @@ export default function Mealist(){
     }
 
     return(
-    <section className="search--restaurant--section p-4 position-relative">
+    <div className='search--restaurant--section'>
+    <section className=" p-4 position-relative">
         <span className="text-left search--title">Quick Searches</span>
         <h5  className="text-left search--context">Discover restaurants by type of meal</h5>
         <div class="food--categ--search pt-5 d-flex">
@@ -29,7 +30,7 @@ export default function Mealist(){
         {widgets.map(widget=>{
             return(
                 <>
-                <Link to={`filterest/${widget.name}`} key={widget._id} className='text-decoration-none food--item' onClick={()=>displayFilterMeals(widget.name)}>
+                <Link to={`filterest/${widget.name}`} key={widget._id} className='text-decoration-none food--item bg-white' onClick={()=>displayFilterMeals(widget.name)}>
                     <div class="food--categ--item d-flex">
                         <div class="food--categ--img">
                             <img src={widget.image} width="160" height="160px"/>
@@ -46,5 +47,6 @@ export default function Mealist(){
         })}
         </div>
     </section>
+    </div>
     )
 }
