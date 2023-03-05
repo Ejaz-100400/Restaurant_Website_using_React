@@ -3,6 +3,8 @@
 <br>
 This is a web application for a restaurant built using React, MongoDB, Bootstrap, Node.js, and Express. The website allows users to create an account, filter restaurants, view hotel details, add and remove items from their cart, order items online, and make online payments.
 
+<img src='https://user-images.githubusercontent.com/76722208/222948280-5a693699-fe0f-464b-b581-c6ebc736796d.png'>
+
 ## Languages Used
 -React
 -MongoDB
