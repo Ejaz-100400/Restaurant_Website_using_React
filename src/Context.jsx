@@ -83,7 +83,7 @@ React.useEffect(() => {
     // display details of the restaurant
     function displayHotelDetails(hoteldetail){
         sethoteldetail(prevmenu=>[...prevmenu,hoteldetail]);
-        localStorage.setItem('hoteldetail',JSON.stringify(hoteldetail));
+        sessionStorage.setItem('hoteldetail',JSON.stringify(hoteldetail));
     }
 
     // clearing the deatils of the restaurant in Hoteldetail component

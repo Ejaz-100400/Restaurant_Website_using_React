@@ -5,6 +5,7 @@ import { Context } from "../../../Context"
 export default function MealFilter(){
     const {menu,fetchRestaurants,filter,setFilter,restaurants,displayHotelDetails}=React.useContext(Context)
     const[costvalue,setcostvalue]=React.useState('')
+    const[currentPg,setcurrentPg]=React.useState('')
     const uniqueCities = Array.from(new Set(menu.map((city) => city.city_name)));
     const uniqueCuisine = Array.from(new Set(menu.map((item) => item.Cuisine[0].cuisinename)));
     const uniqueCostype= Array.from(new Set(menu.map((item)=>item.costype)))
@@ -24,7 +25,8 @@ export default function MealFilter(){
             restaurants.sort((a, b) => b.cost - a.cost);
         }
       }
-
+      const totalPages = (menu.length /2);
+      console.log(totalPages)
 
     
 
@@ -57,13 +59,14 @@ export default function MealFilter(){
                     {uniqueCuisine.map((cuisinetype,i)=>{
                         return(
                             <div className="d-flex gap-2 pt-1">
-                            <input type="radio" className="p-2" name={`${cuisinetype}`} value={`${cuisinetype}`} id={`${i+1}`}
+                            <input type="radio" className="p-2" name={`${cuisinetype}`} value={`${cuisinetype}`} id={`${cuisinetype}`}
+                            onChecked={(e)=>e.target.checked}
                             onChange={(e) => {
                                 const isChecked = e.target.checked;
                                 const value = e.target.value;
                                 const newCuisine = isChecked
                                   ? [...filter.cuisine, value]
-                                  : '';
+                                  : [];
                                 setFilter({ ...filter, cuisinename: newCuisine,page:filter.page =1 });
                               }}
                            />
@@ -128,16 +131,11 @@ export default function MealFilter(){
               <li className={`page-item p-2 ${filter.page<=1?'disabled':''}`} onClick={() => setFilter({ ...filter, page: filter.page - 1 })}>
                 <a className="page-link nav page-nav"><i class="fa-solid fa-chevron-left"></i></a>
               </li>
-              {/* {filter.map(filter,index=>{
-                return(
-                    <li className="page-item p-2" onClick={()=>setFilter({...filter,page:index})}><a className="page-link nav page-nav" href="#">{index}</a></li>
-                )
-              })} */}
-              <li className="page-item p-2" onClick={()=>setFilter({...filter,page:1})}><a className="page-link nav page-nav" href="#">1</a></li>
-              <li className="page-item p-2" onClick={()=>setFilter({...filter,page:2})}><a className="page-link nav page-nav" href="#">2</a></li>
-              <li className="page-item p-2" onClick={()=>setFilter({...filter,page:3})}><a className="page-link nav page-nav" href="#">3</a></li>
-              <li className="page-item p-2" onClick={()=>setFilter({...filter,page:4})}><a className="page-link nav page-nav" href="#">4</a></li>
-              <li className="page-item p-2" onClick={()=>setFilter({...filter,page:5})}><a className="page-link nav page-nav" href="#">5</a></li>
+              {[...Array(totalPages)].map((_, index) => (
+              <li key={index} className={`page-item p-2 ${index + 1 === filter.page ? 'active' : ''}`} onClick={() => setFilter({ ...filter, page: index + 1 })}>
+                <a className="page-link nav page-nav" href="#">{index + 1}</a>
+            </li>
+              ))}
               <li className={`page-item p-2 ${restaurants.length<2?'disabled':''} `} onClick={() => setFilter({ ...filter, page: filter.page + 1 })}>
                 <a className="page-link nav page-nav"><i class="fa-solid fa-chevron-right"></i></a>
               </li>

@@ -21,7 +21,6 @@ export default function Login(){
       let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [modal2IsOpen, set2IsOpen] = React.useState(false);
-  const[modallogOpen,setmodelsOpen] = React.useState(false);
   
   const handleUser = (event) => {
     const updatedUser = { ...user, [event.target.name]: event.target.value };
@@ -39,27 +38,12 @@ export default function Login(){
       setalert(false)
       const updatedUser = { ...user, [e.target.name]: e.target.value };
       setuser(updatedUser);
-      localStorage.setItem("user", JSON.stringify(updatedUser));
+     sessionStorage.setItem("user", JSON.stringify(updatedUser));
       set2IsOpen(false);   
     }
   }
 
-   // validation for user who is logging in 
-   function handleLoginuser(e){
-    e.preventDefault();
-    const loc=localStorage.getItem('user')
-    const usercre = JSON.parse(loc)
-     if(usercre.email!= user.email && usercre.password!= user.password){
-      setalert(true)
-     }
-     else{
-      setalert(false)
-     }
-     if(!user.email&&!user.password){
-      setalert(true)
-     }
-  }
-  console.log(user)
+
 
 
   function openModal() {
@@ -117,40 +101,6 @@ export default function Login(){
             </div>
         </div>
         </Modal>
-
-
-        {/* Log In*/}
-        {/* <Modal
-          className='modal-backdrop position-relative'
-          isOpen={modallogOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closelogModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
-        <div className="">
-            <div className="position-absolute sign-in-form   login-sec p-3 mt-5">
-              <span className="text-warning text-center" style={{display:alert?'block':'none'}}>Kindly create an account</span>
-              <form className="p-3 d-flex flex-column gap-3 justify-content-center">
-                <div class="form-floating mb-3">
-                  <input type="email" class="form-control w-100" id="floatingInput" placeholder="name@example.com" 
-                  name='email' value={user.email} onChange={handleUser}/>
-                  <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating">
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                  name="password" value={user.password} onChange={handleUser} />
-                  <label for="floatingPassword">Password</label>
-                </div>
-                <div className="d-flex  gap-3 justify-content-center">
-                <button className="place-order-btn mt-3" onClick={handleLoginuser}>Submit</button>
-                <button type="submit" className="place-order-btn mt-3 p-2" onClick={closelogModal} >Close</button>
-                </div>
-              </form>
-            </div>
-        </div>
-        </Modal> */}
-
 
 
 

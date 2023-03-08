@@ -7,7 +7,7 @@
 }
 Header{
   top:10px;
-  right:100px;
+  right:0px;
 }
 /* @media(max-width:967px){
   Header{
@@ -103,11 +103,14 @@ input{
   .sign-in-form{
     width:90%;
   }
+  .Header{
+    right:0px;
+    top:5px;
+  }
 }
 @media(max-width:567px){
   .sign-in-form{
-    width:80%;
-    height:50%;
+    width:70%;
   }
 }
 .rest-container{
@@ -195,8 +198,17 @@ flex-wrap: wrap;
   /* .log{
     display: none;
   } */
-  input[name='restaurant']{
-    width:100%;
+  select[name='restaurant']{
+    width:350px;
+  }
+  .elogo{
+    font-size:50px;
+  }
+  .elogo-mealhead{
+    font-size:20px;
+  }
+  .rest-container{
+
   }
 }
 .search--restaurant--section{
@@ -240,6 +252,9 @@ flex-wrap: wrap;
   }
   .login{
     width:90%;
+  }
+  .rest-container{
+    width:100%;
   }
 }
 .food--categ--item:hover{
@@ -478,11 +493,11 @@ hr{
   bottom:20px;
   right:30px;
   border:none;
-  width:10%;
   backdrop-filter:blur(3px);
-  font-size:18px;
+  font-size:20px;
   color:#192F60;
   font-weight: 600;
+  padding:15px;
   transition: all 0.2s ease-in-out;
 }
 .img-glry-btn:hover{

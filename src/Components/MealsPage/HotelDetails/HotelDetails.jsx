@@ -6,7 +6,7 @@ import 'react-tabs/style/react-tabs.css';
 import { Context } from '../../../Context';
 export default function HotelDetails(){
     const {hoteldetail,itemmsg,additem}=React.useContext(Context)
-    const localitem= localStorage.getItem('hoteldetail')
+    const localitem= sessionStorage.getItem('hoteldetail')
     const parsloc=JSON.parse(localitem)
     console.log(parsloc)
     const hotelelement =
